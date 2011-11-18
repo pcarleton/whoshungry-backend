@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @user.phone_number %>
+</p>
+
+<p>
+  <b>Availability:</b>
+  <%= @user.availability %>
+</p>
+
+<ul>
+<% if !@users.blank? %>
+
+  <% for user in @users %>
+<% if user != @user %>
+    <li><%= user.phone_number%>  <%= link_to "Add Friend", friendships_path(:friend_id => user, :user_id => @user), :method => :post%></li>
+  <% end %>
+<% end %>
+<ol>
+  
+<% end %>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
