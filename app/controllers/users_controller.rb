@@ -9,6 +9,34 @@ class UsersController < ApplicationController
       format.json { render :json => @users }
     end
   end
+  
+  # Get /users/bynum/1
+  # get /users/bynum/1.json
+  
+  def bynum
+    @user = User.find_by_phone_number(params[:id])
+    
+    @users = User.all
+
+    respond_to do |format|
+      format.html { render :show}
+=begin
+      format.json { render :json => @user.to_json(
+        :include => { 
+          :avail => {
+            :include => {
+              :food_times => {
+                :only => [:dow, :start, :end] 
+              }
+            },
+            :only => {}
+          }, :friends =>  {}
+        }
+      )}
+=end
+    format.json {render :json => @user.to_json}
+    end
+  end
 
   # GET /users/1
   # GET /users/1.json
@@ -19,7 +47,18 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @user.to_json(:include => :friends)}
+      format.json { render :json => @user.to_json(
+        :include => { 
+          :avail => {
+            :include => {
+              :food_times => {
+                :only => [:dow, :start, :end] 
+              }
+            },
+            :only => {}
+          }, :friends => {}
+        }
+      )}
     end
   end
 

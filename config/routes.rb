@@ -2,6 +2,8 @@ Whoshungry::Application.routes.draw do
   resources :friendships
 
   resources :users
+  
+  match 'users/bynum/:id' => 'users#bynum'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

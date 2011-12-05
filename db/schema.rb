@@ -10,7 +10,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111118053443) do
+ActiveRecord::Schema.define(:version => 20111205043008) do
+
+  create_table "availabilities", :force => true do |t|
+    t.integer  "sunday_start"
+    t.integer  "sunday_end"
+    t.integer  "monday_start"
+    t.integer  "monday_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "avails", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "food_times", :force => true do |t|
+    t.integer  "avail_id"
+    t.integer  "dow"
+    t.string   "start"
+    t.string   "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
