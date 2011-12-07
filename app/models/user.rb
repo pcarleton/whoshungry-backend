@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_one :avail
   has_many :friends, :through => :friendships
   
+=begin
   def to_json
     super(:include => { :avail => {:include => {
                                   :food_times => {
@@ -13,4 +14,5 @@ class User < ActiveRecord::Base
       }#, :friends =>  {}
     })
   end
+=end
 end

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { render :show}
-=begin
+#=begin
       format.json { render :json => @user.to_json(
         :include => { 
           :avail => {
@@ -33,8 +33,8 @@ class UsersController < ApplicationController
           }, :friends =>  {}
         }
       )}
-=end
-    format.json {render :json => @user.to_json}
+#=end
+    #format.json {render :json => @user.to_json(:include => :friends)}
     end
   end
 
