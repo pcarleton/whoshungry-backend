@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  avail_id: 1
+  dow: 1
+  start: MyString
+  end: MyString
+
+two:
+  avail_id: 1
+  dow: 1
+  start: MyString
+  end: MyString
