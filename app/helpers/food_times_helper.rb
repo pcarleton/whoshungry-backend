@@ -1,0 +1,2 @@
+module FoodTimesHelper
+end

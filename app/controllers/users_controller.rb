@@ -11,17 +11,12 @@ class UsersController < ApplicationController
   end
   
   def avail
-    @avail = Avail.find_by_user_id(params[:id])
+    @foodtimes = FoodTime.find_all_by_user_id(params[:id])
     
     respond_to do |format|
       format.html #nothing
-      format.json { render :json => @avail.to_json( 
-          :include => {
-            :food_times => {
-              :only => [:dow, :start, :end] 
-            }
-          },
-          :only => {}
+      format.json { render :json => @foodtimes.to_json( 
+              :only => [:dow, :start, :end, :comment]
         )}
     end
     
@@ -40,14 +35,9 @@ class UsersController < ApplicationController
 #=begin
       format.json { render :json => @user.to_json(
         :include => { 
-          :avail => {
-            :include => {
               :food_times => {
                 :only => [:dow, :start, :end] 
-              }
-            },
-            :only => {}
-          }, :friends =>  {}
+              }, :friends =>  {}
         }
       )}
 #=end
@@ -61,21 +51,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     @users = User.all
-    @avails = @user.avail.food_times.sort { |a, b| a.dow <=> b.dow}
+    @avails = @user.food_times.sort { |a, b| a.dow <=> b.dow}
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user.to_json(
         :include => { 
-          :avail => {
-            :include => {
-              :food_times => {
-                :only => [:dow, :start, :end] 
-              }
-            },
-            :only => {}
+          :food_times => {
+                :only => [:dow, :start, :end, :comment] 
           }, :friends => {}
-        }
+        }, :only => [:id, :phone_number]
       )}
     end
   end

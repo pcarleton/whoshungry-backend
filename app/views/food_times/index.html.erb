@@ -1,0 +1,29 @@
+<h1>Listing food_times</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Dow</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @food_times.each do |food_time| %>
+  <tr>
+    <td><%= food_time.user_id %></td>
+    <td><%= food_time.start %></td>
+    <td><%= food_time.end %></td>
+    <td><%= food_time.dow %></td>
+    <td><%= link_to 'Show', food_time %></td>
+    <td><%= link_to 'Edit', edit_food_time_path(food_time) %></td>
+    <td><%= link_to 'Destroy', food_time, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Food time', new_food_time_path %>

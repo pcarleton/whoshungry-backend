@@ -1,0 +1,21 @@
+<%= form_for(@avail) do |f| %>
+  <% if @avail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@avail.errors.count, "error") %> prohibited this avail from being saved:</h2>
+
+      <ul>
+      <% @avail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

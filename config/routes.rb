@@ -1,4 +1,8 @@
 Whoshungry::Application.routes.draw do
+  resources :food_times
+
+  resources :avails
+
   resources :friendships
 
   resources :users

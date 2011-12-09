@@ -10,16 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111205043008) do
-
-  create_table "availabilities", :force => true do |t|
-    t.integer  "sunday_start"
-    t.integer  "sunday_end"
-    t.integer  "monday_start"
-    t.integer  "monday_end"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20111209210631) do
 
   create_table "avails", :force => true do |t|
     t.integer  "user_id"
@@ -28,12 +19,13 @@ ActiveRecord::Schema.define(:version => 20111205043008) do
   end
 
   create_table "food_times", :force => true do |t|
-    t.integer  "avail_id"
+    t.integer  "user_id"
+    t.integer  "start"
+    t.integer  "end"
     t.integer  "dow"
-    t.string   "start"
-    t.string   "end"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment"
   end
 
   create_table "friendships", :force => true do |t|

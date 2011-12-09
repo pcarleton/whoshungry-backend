@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @food_time.user_id %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @food_time.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @food_time.end %>
+</p>
+
+<p>
+  <b>Dow:</b>
+  <%= @food_time.dow %>
+</p>
+
+
+<%= link_to 'Edit', edit_food_time_path(@food_time) %> |
+<%= link_to 'Back', food_times_path %>
