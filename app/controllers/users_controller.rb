@@ -44,6 +44,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     @users = User.all
+    @avails = @user.avail.food_times.sort { |a, b| a.dow <=> b.dow}
 
     respond_to do |format|
       format.html # show.html.erb

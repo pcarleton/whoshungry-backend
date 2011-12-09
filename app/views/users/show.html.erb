@@ -7,7 +7,9 @@
 
 <p>
   <b>Availability:</b>
-  <%= @user.availability %>
+  <% for avail in @avails %>
+	<%= avail.dow %>  <%= avail.start %>, <%= avail.end %> <br />
+  <% end%>
 </p>
 
 <ul>
