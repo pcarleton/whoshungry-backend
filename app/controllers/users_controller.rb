@@ -10,6 +10,23 @@ class UsersController < ApplicationController
     end
   end
   
+  def avail
+    @avail = Avail.find_by_user_id(params[:id])
+    
+    respond_to do |format|
+      format.html #nothing
+      format.json { render :json => @avail.to_json( 
+          :include => {
+            :food_times => {
+              :only => [:dow, :start, :end] 
+            }
+          },
+          :only => {}
+        )}
+    end
+    
+  end
+  
   # Get /users/bynum/1
   # get /users/bynum/1.json
   
