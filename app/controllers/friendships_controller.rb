@@ -42,10 +42,17 @@ class FriendshipsController < ApplicationController
     @user = User.find(params[:user_id])
     
     @friend = User.find_by_phone_number(params[:friend_number])
-    @friendship = @user.friendships.build(:friend_id => @friend.id)
+    
+    if @friend
+      @friendship = @user.friendships.build(:friend_id => @friend.id)
+      success = @friendship.save
+    else
+      success = false
+    end
+    
 
     respond_to do |format|
-      if @friendship.save
+      if success
         format.html { redirect_to @friendship, :notice => 'Friendship was successfully created.' }
         format.json { render :json => @friendship, :status => :created, :location => @friendship }
       else
