@@ -11,7 +11,7 @@ Whoshungry::Application.routes.draw do
   
   match 'users/avail/:id' => 'users#avail'
   
-  match 'frienships/bynum' => 'friendships#bynum'
+  match 'friendships/bynum' => 'friendships#bynum'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
