@@ -57,7 +57,7 @@ class FriendshipsController < ApplicationController
         format.json { render :json => @friendship, :status => :created, :location => @friendship }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @friendship.errors, :status => :unprocessable_entity }
+        format.json { render :json => "error", :status => :unprocessable_entity }
       end
     end
   end
