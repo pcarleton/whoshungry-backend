@@ -1,6 +1,6 @@
 class FoodTime < ActiveRecord::Base
   belongs_to :user
-  validates_uniqueness_of :start, :scope => [:user_id, :end, :dow]
+  validates :start, :uniqueness => {:scope => [:user_id, :end, :dow]}
   
   def int_to_time(input)
     mins = "%02d" % (input % 60)
