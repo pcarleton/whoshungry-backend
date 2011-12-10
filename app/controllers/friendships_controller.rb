@@ -36,6 +36,24 @@ class FriendshipsController < ApplicationController
   def edit
     @friendship = Friendship.find(params[:id])
   end
+  
+  # Post /frienships/bynum
+  def bynum
+    @user = User.find(params[:user_id])
+    
+    friend_id = User.find_by_phone_number(params[:friend_number])
+    @friendship = @user.friendships.build(:friend_id => friend_id)
+
+    respond_to do |format|
+      if @friendship.save
+        format.html { redirect_to @friendship, :notice => 'Friendship was successfully created.' }
+        format.json { render :json => @friendship, :status => :created, :location => @friendship }
+      else
+        format.html { render :action => "new" }
+        format.json { render :json => @friendship.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 
   # POST /friendships
   # POST /friendships.json
