@@ -41,8 +41,8 @@ class FriendshipsController < ApplicationController
   def bynum
     @user = User.find(params[:user_id])
     
-    friend_id = User.find_by_phone_number(params[:friend_number])
-    @friendship = @user.friendships.build(:friend_id => friend_id)
+    @friend = User.find_by_phone_number(params[:friend_number])
+    @friendship = @user.friendships.build(:friend_id => @friend.id)
 
     respond_to do |format|
       if @friendship.save
