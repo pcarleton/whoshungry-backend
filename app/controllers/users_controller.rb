@@ -101,6 +101,7 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    @user.food_times.destroy_all
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
